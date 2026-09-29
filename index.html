@@ -1,0 +1,579 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Little Brother 💙</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Poppins", Arial, sans-serif;
+        overflow: hidden;
+        background: #080b24;
+        color: white;
+    }
+
+    /* ===== BACKGROUND ===== */
+    .background {
+        position: fixed;
+        inset: 0;
+        background:
+            radial-gradient(circle at 20% 20%, #28245c 0%, transparent 35%),
+            radial-gradient(circle at 80% 80%, #34245c 0%, transparent 35%),
+            linear-gradient(135deg, #07091c, #11153b, #0a0d29);
+        z-index: -2;
+    }
+
+    .stars {
+        position: fixed;
+        inset: 0;
+        background-image:
+            radial-gradient(white 1px, transparent 1px),
+            radial-gradient(#b8b5ff 1px, transparent 1px);
+        background-size: 90px 90px, 140px 140px;
+        background-position: 10px 20px, 50px 80px;
+        opacity: 0.25;
+        z-index: -1;
+        animation: starsMove 15s linear infinite;
+    }
+
+    @keyframes starsMove {
+        from { transform: translateY(0); }
+        to { transform: translateY(-90px); }
+    }
+
+    /* ===== PAGES ===== */
+    .page {
+        display: none;
+        width: 100%;
+        height: 100vh;
+        min-height: 600px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 25px;
+        animation: fadeIn 0.7s ease;
+    }
+
+    .page.active {
+        display: flex;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .content {
+        max-width: 800px;
+        width: 100%;
+    }
+
+    /* ===== TEXT ===== */
+    .small-title {
+        color: #aaa8ff;
+        letter-spacing: 4px;
+        font-size: 13px;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+    }
+
+    h1 {
+        font-size: clamp(40px, 7vw, 75px);
+        line-height: 1.05;
+        background: linear-gradient(90deg, #ffffff, #c8c4ff, #a8d8ff);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-bottom: 25px;
+    }
+
+    h2 {
+        font-size: clamp(28px, 5vw, 50px);
+        margin-bottom: 25px;
+    }
+
+    p {
+        font-size: clamp(16px, 2vw, 20px);
+        line-height: 1.8;
+        color: #dedfff;
+    }
+
+    .highlight {
+        color: #bcb8ff;
+        font-weight: bold;
+    }
+
+    /* ===== BUTTON ===== */
+    .next-btn {
+        margin-top: 40px;
+        padding: 14px 34px;
+        border: 1px solid rgba(190,185,255,0.6);
+        border-radius: 50px;
+        background: rgba(130,125,255,0.12);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        backdrop-filter: blur(10px);
+    }
+
+    .next-btn:hover {
+        background: rgba(170,165,255,0.25);
+        transform: translateY(-3px);
+        box-shadow: 0 0 25px rgba(150,140,255,0.25);
+    }
+
+    /* ===== BALLOONS ===== */
+    .balloon {
+        position: absolute;
+        width: 55px;
+        height: 70px;
+        border-radius: 50%;
+        opacity: 0.85;
+        animation: float 5s ease-in-out infinite;
+    }
+
+    .balloon::after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 100px;
+        background: rgba(255,255,255,0.4);
+        top: 68px;
+        left: 50%;
+    }
+
+    .b1 {
+        background: #8f8cff;
+        left: 8%;
+        top: 20%;
+    }
+
+    .b2 {
+        background: #7ec8ff;
+        right: 10%;
+        top: 15%;
+        animation-delay: 1s;
+    }
+
+    .b3 {
+        background: #c2a5ff;
+        left: 15%;
+        bottom: 15%;
+        animation-delay: 2s;
+    }
+
+    .b4 {
+        background: #92d8ff;
+        right: 15%;
+        bottom: 20%;
+        animation-delay: 3s;
+    }
+
+    @keyframes float {
+        0%,100% { transform: translateY(0) rotate(-3deg); }
+        50% { transform: translateY(-25px) rotate(3deg); }
+    }
+
+    /* ===== GIFT ===== */
+    .gift {
+        width: 180px;
+        height: 150px;
+        margin: 0 auto 30px;
+        position: relative;
+        cursor: pointer;
+        animation: giftFloat 3s ease-in-out infinite;
+    }
+
+    .gift-box {
+        position: absolute;
+        bottom: 0;
+        width: 180px;
+        height: 120px;
+        background: linear-gradient(135deg, #6560c8, #918cf4);
+        border-radius: 8px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .gift-box::before {
+        content: "";
+        position: absolute;
+        width: 25px;
+        height: 120px;
+        background: #c7c4ff;
+        left: 78px;
+    }
+
+    .gift-lid {
+        position: absolute;
+        width: 195px;
+        height: 35px;
+        background: #817cf0;
+        left: -7px;
+        top: 15px;
+        border-radius: 7px;
+        z-index: 2;
+    }
+
+    .ribbon {
+        position: absolute;
+        width: 25px;
+        height: 35px;
+        background: #d3d0ff;
+        left: 78px;
+        top: 15px;
+        z-index: 3;
+    }
+
+    .bow {
+        position: absolute;
+        top: -10px;
+        left: 72px;
+        width: 38px;
+        height: 25px;
+        border: 8px solid #d3d0ff;
+        border-radius: 50%;
+        transform: rotate(-25deg);
+        z-index: 4;
+    }
+
+    .bow2 {
+        transform: rotate(25deg);
+        left: 88px;
+    }
+
+    @keyframes giftFloat {
+        0%,100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    /* ===== CAKE ===== */
+    .cake {
+        font-size: 110px;
+        margin-bottom: 20px;
+        animation: cakeBounce 2s infinite;
+    }
+
+    @keyframes cakeBounce {
+        0%,100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    
+    /* ===== LETTER ===== */
+    .letter {
+        background: rgba(255,255,255,0.95);
+        color: #171735;
+        max-width: 650px;
+        margin: auto;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+        text-align: left;
+        position: relative;
+    }
+
+    .letter h3 {
+        color: #625ed0;
+        margin-bottom: 20px;
+        font-size: 25px;
+    }
+
+    .letter p {
+        color: #363653;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    /* ===== FINAL ===== */
+    .final-message {
+        font-size: clamp(18px, 3vw, 25px);
+        line-height: 1.8;
+    }
+
+    .heart {
+        font-size: 55px;
+        margin-bottom: 15px;
+        animation: heartbeat 1.4s infinite;
+    }
+
+    @keyframes heartbeat {
+        0%,100% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+    }
+
+    /* ===== MOBILE ===== */
+    @media(max-width: 600px) {
+        .balloon {
+            transform: scale(0.7);
+        }
+
+        .letter {
+            padding: 25px;
+        }
+
+        .letter p {
+            font-size: 14px;
+        }
+
+        .kids {
+            font-size: 60px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="stars"></div>
+
+<!-- BALLOONS -->
+<div class="balloon b1"></div>
+<div class="balloon b2"></div>
+<div class="balloon b3"></div>
+<div class="balloon b4"></div>
+
+
+<!-- ================= PAGE 1 ================= -->
+<section class="page active" id="page1">
+    <div class="content">
+        <div class="small-title">A little surprise for you</div>
+
+        <h1>Happy Birthday </h1>
+
+        <div class="cake">🎂</div>
+
+        <p>
+            Someone special has a little birthday surprise waiting for you...
+        </p>
+
+        <button class="next-btn" onclick="nextPage()">
+            Open the surprise ✨
+        </button>
+    </div>
+</section>
+
+
+<!-- ================= PAGE 2 ================= -->
+ <section class="page" id="page2">
+    <div class="content">
+
+        <div class="kids" style="font-size: 85px;">🎉</div>
+
+        <h2>Happy Birthday to my<br>
+            <span class="highlight">unseen brother!</span>
+        </h2>
+
+        <p>
+            It’s kinda funny celebrating someone I’ve never actually seen,
+            but hey… you still deserve a birthday wish! 😄
+        </p>
+
+        <button class="next-btn" onclick="nextPage()">
+            Next 💙
+        </button>
+    </div>
+</section>
+
+<!-- ================= PAGE 3 ================= -->
+<section class="page" id="page3">
+    <div class="content">
+
+        <div class="cake">🍰</div>
+
+        <h2>Be happy, my little brother ❤️</h2>
+
+        <p>
+            May your life always be filled with
+            <span class="highlight">happiness, laughter,</span>
+            and beautiful moments.
+        </p>
+
+        <button class="next-btn" onclick="nextPage()">
+            There's more... ✨
+        </button>
+    </div>
+</section>
+
+
+<!-- ================= PAGE 4 ================= -->
+ <section class="page" id="page4">
+    <div class="content">
+
+        <img src="cat.png"
+             alt="Candy the cat" 
+             style="width: 180px; height: 180px; object-fit: contain; margin-bottom: 20px;">
+
+        <h2>And of course...</h2>
+
+        <p>
+            Give <span class="highlight">MyCandy</span>
+            some extra love from me 🎀 too!
+        </p>
+
+        <button class="next-btn" onclick="nextPage()">
+            One more thing 🎁
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ================= PAGE 5 ================= -->
+ <section class="page" id="page5">
+    <div class="content">
+
+        <!-- Luxury Red Gift Box -->
+        <div class="gift">
+            <div class="bow"></div>
+            <div class="bow bow2"></div>
+
+            <div class="gift-lid"></div>
+
+            <div class="gift-box">
+                <div class="ribbon"></div>
+            </div>
+        </div>
+
+        <h2>Your little gift ❤️</h2>
+
+        <p>
+            This isn’t anything too fancy or precious...
+        </p>
+
+        <button class="next-btn" onclick="nextPage()">
+            Open the gift ✨
+        </button>
+    </div>
+</section>
+
+ <style>
+.gift-box {
+    background: linear-gradient(135deg, #ee3c3c, #ce1565, #ed2323 );
+    border: 2px solid #df2a2a;
+    box-shadow: 0 10px 25px rgb(201, 9, 166);
+}
+
+.gift-lid {
+    background: linear-gradient(135deg, #d82222, #b1276c, #ba3232);
+}
+
+/* 🎀 Bow instead of rings */
+.bow {
+    background: #13057a;
+}
+
+.bow::before,
+.bow::after {
+    background: #270658;
+}
+
+.bow2 {
+    background: #37097b;
+}
+</style>
+    
+
+<!-- ================= PAGE 6 ================= -->
+<section class="page" id="page6">
+    <div class="content">
+
+        <div class="letter">
+
+            <h3>💌 A little birthday letter</h3>
+
+            <p>
+                This isn’t anything too fancy or precious…
+                just a small little gift made with
+                <strong>genuine feelings from my heart.</strong>
+            </p>
+
+            <p>
+               I just wanted to do a little something to make your birthday
+                feel a bit more special. 🎂✨
+            </p>
+
+            <p>
+                So this little surprise is my way of saying:
+                <strong>Happy Birthday, little brother! 💙</strong>
+            </p>
+
+        </div>
+
+        <button class="next-btn" onclick="nextPage()">
+            Continue 💫
+        </button>
+    </div>
+</section>
+
+
+<!-- ================= PAGE 7 ================= -->
+<section class="page" id="page7">
+    <div class="content">
+
+        <div class="heart">💙</div>
+
+        <h1>Happy Birthday!</h1>
+
+        <p class="final-message">
+            Happy Birthday once again, little brother! 🥳<br>
+            Stay happy & keep smiling!<br><br>
+            🎂 🎈 🎁 ✨
+        </p>
+
+        <button class="next-btn" onclick="restart()">
+            Watch it again ↻
+        </button>
+
+    </div>
+</section>
+
+
+<script>
+
+let currentPage = 1;
+
+function nextPage() {
+
+    document.getElementById("page" + currentPage)
+        .classList.remove("active");
+
+    currentPage++;
+
+    if (currentPage > 7) {
+        currentPage = 1;
+    }
+
+    document.getElementById("page" + currentPage)
+        .classList.add("active");
+}
+
+function restart() {
+
+    document.getElementById("page" + currentPage)
+        .classList.remove("active");
+
+    currentPage = 1;
+
+    document.getElementById("page1")
+        .classList.add("active");
+}
+
+</script>
+
+</body>
+</html>
